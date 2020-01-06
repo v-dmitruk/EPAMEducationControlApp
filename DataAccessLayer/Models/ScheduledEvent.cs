@@ -18,14 +18,17 @@ namespace DAL.Models
         public Test Test { get; set; }
         [Required]
         public DateTime Date { get; set; }
+        //[Required]
+        public Teacher Creator { get; }
         public DateTime CreationDate { get; }
-        public ScheduledEvent(Course course, Lection lection, Test test, DateTime date)
+        public ScheduledEvent(Course course, Lection lection, Test test, DateTime date, Teacher teacher)
         {
             Course = course;
             Lection = lection;
             Test = test;
             Date = date;
             CreationDate = DateTime.Now;
+            Creator = teacher;
         }
     }
 }

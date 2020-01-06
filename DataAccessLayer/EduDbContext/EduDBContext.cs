@@ -100,6 +100,16 @@ namespace DAL.EduDbContext
         }
     }
 
+    class ScheduledEventConfiguration : EntityTypeConfiguration<ScheduledEvent>
+    {
+        public ScheduledEventConfiguration()
+        {
+            HasRequired(x => x.Course);
+            HasOptional(x => x.Lection);
+            HasOptional(x => x.Test);
+            HasRequired(x => x.Creator);
+        }
+    }
 
     public class DbInitializer : DropCreateDatabaseIfModelChanges<EduDBContext>
     {

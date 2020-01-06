@@ -54,8 +54,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DTOModels\CourseDTO.cs" />
+    <Compile Include="DTOModels\LectionDTO.cs" />
+    <Compile Include="DTOModels\LectionResultDTO.cs" />
+    <Compile Include="DTOModels\QuestionDTO.cs" />
+    <Compile Include="DTOModels\ScheduledEventDTO.cs" />
+    <Compile Include="DTOModels\StudentDTO.cs" />
+    <Compile Include="DTOModels\TeacherDTO.cs" />
+    <Compile Include="DTOModels\TestDTO.cs" />
+    <Compile Include="DTOModels\TestResultDTO.cs" />
+    <Compile Include="Infrastructure\MapperProfile.cs" />
+    <Compile Include="Interfaces\ICourseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CourseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -67,6 +78,7 @@
       <Name>DataAccessLayer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
