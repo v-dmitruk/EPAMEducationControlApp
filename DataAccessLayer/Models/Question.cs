@@ -8,10 +8,11 @@ namespace DAL.Models
     {
         [Key, Required]
         public int QuestionID { get; }
-        //[ForeignKey("TeacherID")]
         public Teacher Creator { get; }
+        [Required, MaxLength(50)]
+        public string Category { get; set; }
         public DateTime CreationDate { get; }
-        [Required]
+        [Required, MaxLength(2000)]
         public string QuestionBody { get; set; }
         [MaxLength(2000)]
         public string Answer1 { get; set; }
@@ -23,7 +24,7 @@ namespace DAL.Models
         public string Answer4 { get; set; }
         [Required]
         public int RightAnswer { get; set; }
-        public Question(Teacher creator, string questionBody, string answer1, string answer2, string answer3, string answer4, int rightAnswer)
+        public Question(Teacher creator, string questionBody, string answer1, string answer2, string answer3, string answer4, int rightAnswer, string category)
         {
             Creator = creator;
             CreationDate = DateTime.Now;
@@ -33,6 +34,7 @@ namespace DAL.Models
             Answer3 = answer3;
             Answer4 = answer4;
             RightAnswer = rightAnswer;
+            Category = category;
         }
 
     }

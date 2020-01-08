@@ -15,7 +15,8 @@ namespace BLL.DTOModels
         public int AdditionalMark { get; set; }
         public DateTime Date { get; }
         public CourseDTO Course { get; }
-        public LectionResultDTO(LectionDTO lection, StudentDTO student, int mark, int addMark, DateTime date, CourseDTO course)
+        public bool IsVisited { get; set; }
+        public LectionResultDTO(LectionDTO lection, StudentDTO student, int mark, int addMark, DateTime date, CourseDTO course, bool visited)
         {
             Lection = lection;
             Student = student;
@@ -23,6 +24,7 @@ namespace BLL.DTOModels
             AdditionalMark = addMark;
             Date = date;
             Course = course;
+            IsVisited = visited;
         }
     }
 }

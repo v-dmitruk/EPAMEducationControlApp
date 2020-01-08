@@ -12,32 +12,15 @@ namespace BLL.Infrastructure
         {
             public MapperProfile()
             {
-            CreateMap<CourseDTO, DAL.Models.Course>();
-            CreateMap<DAL.Models.Course, CourseDTO>();
-
-            CreateMap<LectionDTO, DAL.Models.Lection>();
-            CreateMap<DAL.Models.Lection, LectionDTO>();
-
-            CreateMap<LectionResultDTO, DAL.Models.LectionResult>();
-            CreateMap<DAL.Models.LectionResult, LectionResultDTO>();
-
-            CreateMap<QuestionDTO, DAL.Models.Question>();
-            CreateMap<DAL.Models.Question, QuestionDTO>();
-
-            CreateMap<ScheduledEventDTO, DAL.Models.ScheduledEvent>();
-            CreateMap<DAL.Models.ScheduledEvent, ScheduledEventDTO>();
-
-            CreateMap<StudentDTO, DAL.Models.Student>();
-            CreateMap<DAL.Models.Student, StudentDTO>();
-
-            CreateMap<TeacherDTO, DAL.Models.Teacher>();
-            CreateMap<DAL.Models.Teacher, TeacherDTO>();
-
-            CreateMap<TestDTO, DAL.Models.Test>();
-            CreateMap<DAL.Models.Test, TestDTO>();
-
-            CreateMap<TestResultDTO, DAL.Models.TestResult>();
-            CreateMap<DAL.Models.TestResult, TestResultDTO>();
+            CreateMap<CourseDTO, DAL.Models.Course>().ReverseMap();
+            CreateMap<LectionDTO, DAL.Models.Lection>().ReverseMap();
+            CreateMap<LectionResultDTO, DAL.Models.LectionResult>().ReverseMap();
+            CreateMap<QuestionDTO, DAL.Models.Question>().ReverseMap();
+            CreateMap<ScheduledEventDTO, DAL.Models.ScheduledEvent>().ReverseMap();
+            CreateMap<StudentDTO, DAL.Models.Student>().ReverseMap();
+            CreateMap<TeacherDTO, DAL.Models.Teacher>().ReverseMap();
+            CreateMap<TestDTO, DAL.Models.Test>().ReverseMap();
+            CreateMap<TestResultDTO, DAL.Models.TestResult>().ReverseMap();
 
 
 

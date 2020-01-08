@@ -15,8 +15,9 @@ namespace BLL.DTOModels
         public DateTime CreationDate { get; }
         public int MaxMark { get; set; }
         public int Duration { get; set; }
-        public List<CourseDTO> Courses { get; set; }
-        public List<QuestionDTO> Questions { get; set; }
+        public List<CourseDTO> Courses { get; set; } = new List<CourseDTO>();
+        public List<QuestionDTO> Questions { get; set; } = new List<QuestionDTO>();
+        public DateTime? Date { get; set; }
         public TestDTO(TeacherDTO creator, string name, string description, int maxMark, int duration)
         {
             Creator = creator;
@@ -25,8 +26,7 @@ namespace BLL.DTOModels
             CreationDate = DateTime.Now;
             MaxMark = maxMark;
             Duration = duration;
-            Courses = new List<CourseDTO>();
-            Questions = new List<QuestionDTO>();
+            Date = null;
         }
     }
 }

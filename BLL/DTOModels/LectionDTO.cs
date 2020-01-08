@@ -17,7 +17,8 @@ namespace BLL.DTOModels
         public bool AdditionalMarkIsAvailable { get; set; }
         public TeacherDTO Creator { get; }
         public DateTime CreationDate { get; }
-        public List<CourseDTO> Courses { get; set; }
+        public List<CourseDTO> Courses { get; set; } = new List<CourseDTO>();
+        public DateTime? Date { get; set; }
         public LectionDTO(string type, string name, string description, string body, int maxMark, bool availability, TeacherDTO creator)
         {
             LectionType = type;
@@ -28,7 +29,7 @@ namespace BLL.DTOModels
             AdditionalMarkIsAvailable = availability;
             Creator = creator;
             CreationDate = DateTime.Now;
-            Courses = new List<CourseDTO>();
+            Date = null;
         }
     }
 }

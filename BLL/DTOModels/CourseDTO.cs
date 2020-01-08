@@ -18,9 +18,9 @@ namespace BLL.DTOModels
         public DateTime StartDate { get; set; }
         public DateTime CreationDate { get; }
         public int DurationInDays { get; set; }
-        public List<LectionDTO> Lections { get; set; }
-        public List<StudentDTO> Students { get; set; }
-        public List<TestDTO> Tests { get; set; }
+        public List<LectionDTO> Lections { get; set; } = new List<LectionDTO>(); 
+        public List<StudentDTO> Students { get; set; } = new List<StudentDTO>();
+    public List<TestDTO> Tests { get; set; } = new List<TestDTO>();
 
         public CourseDTO(string name, string description, int studensMaxQuantity, int maxScore, int minScore, TeacherDTO creator, DateTime startDate, int duration)
         {
@@ -33,9 +33,6 @@ namespace BLL.DTOModels
             MinRequiredScore = minScore;
             StartDate = startDate;
             DurationInDays = duration;
-            Lections = new List<LectionDTO>();
-            Students = new List<StudentDTO>();
-            Tests = new List<TestDTO>();
         }
     }
 }

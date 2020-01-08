@@ -21,11 +21,9 @@ namespace DAL.Models
         public int MaxMark { get; set; }
         [Required]
         public bool AdditionalMarkIsAvailable { get; set; }
-        //[ForeignKey("TeacherID")]
         public Teacher Creator { get; }
         public DateTime CreationDate { get; }
-        public List<Course> Courses { get; set; }
-        //public List<LectionResult> LectionResults { get; set; }
+        public List<Course> Courses { get; set; } = new List<Course>();
         public Lection(string type, string name, string description, string body, int maxMark, bool availability, Teacher creator)
         {
             LectionType = type;
@@ -36,8 +34,6 @@ namespace DAL.Models
             AdditionalMarkIsAvailable = availability;
             Creator = creator;
             CreationDate = DateTime.Now;
-            Courses = new List<Course>();
-            //LectionResults = new List<LectionResult>();
         }
     }
 

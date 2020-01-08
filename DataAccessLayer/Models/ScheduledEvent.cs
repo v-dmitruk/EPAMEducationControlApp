@@ -10,11 +10,8 @@ namespace DAL.Models
     {
         [Key, Required]
         public int ScheduledEventID;
-        //[ForeignKey("CourseID"), Required]
         public Course Course { get; set; }
-        //[ForeignKey("LectionID")]
         public Lection Lection { get; set; }
-        //[ForeignKey("TestID")]
         public Test Test { get; set; }
         [Required]
         public DateTime Date { get; set; }

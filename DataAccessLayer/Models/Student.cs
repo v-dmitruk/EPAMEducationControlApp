@@ -19,12 +19,9 @@ namespace DAL.Models
         public string Description { get; set; }
         [Required]
         public DateTime BirthDate { get; set; }
-        //[ForeignKey("CourseID")]
-        public List<Course> Courses { get; set; }
-        //[ForeignKey("LectionResultID")]
-        public List<LectionResult> LectionResults { get; set; }
-        //[ForeignKey("TestResultID")]
-        public List<TestResult> TestResults { get; set; }
+        public List<Course> Courses { get; set; } = new List<Course>();
+        public List<LectionResult> LectionResults { get; set; } = new List<LectionResult>();
+        public List<TestResult> TestResults { get; set; } = new List<TestResult>();
         public Student(int userID, string name, string lastName, string description, DateTime birthDate)
         {
             UserID = userID;
@@ -32,9 +29,6 @@ namespace DAL.Models
             LastName = lastName;
             Description = description;
             BirthDate = birthDate;
-            LectionResults = new List<LectionResult>();
-            TestResults = new List<TestResult>();
-            Courses = new List<Course>();
         }
         public void UserRegistered(int userID)
         {

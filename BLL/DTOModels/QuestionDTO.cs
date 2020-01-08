@@ -17,7 +17,8 @@ namespace BLL.DTOModels
         public string Answer3 { get; set; }
         public string Answer4 { get; set; }
         public int RightAnswer { get; set; }
-        public QuestionDTO(TeacherDTO creator, string questionBody, string answer1, string answer2, string answer3, string answer4, int rightAnswer)
+        public string Category { get; set; }
+        public QuestionDTO(TeacherDTO creator, string questionBody, string answer1, string answer2, string answer3, string answer4, int rightAnswer, string category)
         {
             Creator = creator;
             CreationDate = DateTime.Now;
@@ -27,6 +28,7 @@ namespace BLL.DTOModels
             Answer3 = answer3;
             Answer4 = answer4;
             RightAnswer = rightAnswer;
+            Category = category;
         }
     }
 }

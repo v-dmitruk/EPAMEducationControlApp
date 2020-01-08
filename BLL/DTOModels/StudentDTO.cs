@@ -14,9 +14,9 @@ namespace BLL.DTOModels
         public string LastName { get; set; }
         public string Description { get; set; }
         public DateTime BirthDate { get; set; }
-        public List<CourseDTO> Courses { get; set; }
-        public List<LectionResultDTO> LectionResults { get; set; }
-        public List<TestResultDTO> TestResults { get; set; }
+        public List<CourseDTO> Courses { get; set; } = new List<CourseDTO>();
+        public List<LectionResultDTO> LectionResults { get; set; } = new List<LectionResultDTO>();
+        public List<TestResultDTO> TestResults { get; set; } = new List<TestResultDTO>();
         public StudentDTO(int userID, string name, string lastName, string description, DateTime birthDate)
         {
             UserID = userID;
@@ -24,9 +24,6 @@ namespace BLL.DTOModels
             LastName = lastName;
             Description = description;
             BirthDate = birthDate;
-            LectionResults = new List<LectionResultDTO>();
-            TestResults = new List<TestResultDTO>();
-            Courses = new List<CourseDTO>();
         }
         public void UserRegistered(int userID)
         {

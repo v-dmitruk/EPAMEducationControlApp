@@ -8,9 +8,7 @@ namespace DAL.Models
     {
         [Key, Required]
         public int LectionResultID { get; }
-        //[ForeignKey("LectionID")]
         public Lection Lection { get; }
-        //[Required, ForeignKey("StudentID")]
         public Student Student { get; }
         [Required]
         public int Mark { get; set; }
@@ -19,7 +17,8 @@ namespace DAL.Models
         [Required]
         public DateTime Date { get; }
         public Course Course { get; }
-        public LectionResult(Lection lection, Student student, int mark, int addMark, DateTime date, Course course)
+        public bool IsVisited { get; set; }
+        public LectionResult(Lection lection, Student student, int mark, int addMark, DateTime date, Course course, bool visited)
         {
             Lection = lection;
             Student = student;
@@ -27,6 +26,7 @@ namespace DAL.Models
             AdditionalMark = addMark;
             Date = date;
             Course = course;
+            IsVisited = visited;
         }
     }
 }

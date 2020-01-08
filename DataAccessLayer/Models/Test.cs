@@ -9,7 +9,6 @@ namespace DAL.Models
     {
         [Key]
         public int TestID { get; }
-        //[ForeignKey("TeacherID")]
         public Teacher Creator { get; }
         [Required, MaxLength(200)]
         public string Name { get; set; }
@@ -20,8 +19,8 @@ namespace DAL.Models
         public int MaxMark { get; set; }
         [Required]
         public int Duration { get; set; }
-        public List<Course> Courses { get; set; }
-        public List<Question> Questions { get; set; }
+        public List<Course> Courses { get; set; } = new List<Course>();
+        public List<Question> Questions { get; set; } = new List<Question>();
         public Test(Teacher creator, string name, string description, int maxMark, int duration)
         {
             Creator = creator;
@@ -30,8 +29,6 @@ namespace DAL.Models
             CreationDate = DateTime.Now;
             MaxMark = maxMark;
             Duration = duration;
-            Courses = new List<Course>();
-            Questions = new List<Question>();
         }
     }
 }
