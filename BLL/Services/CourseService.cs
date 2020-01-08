@@ -8,10 +8,11 @@ using AutoMapper;
 using BLL.Infrastructure;
 using BLL.Interfaces;
 using BLL.DTOModels;
+using DAL.Models;
 
 namespace BLL.Services
 {
-    class CourseService : ICourseService
+    public class CourseService : ICourseService
     {
         Mapper map = new Mapper(MapperProfile.Configured());
         IUnitOfWork db { get; set; }
@@ -23,62 +24,144 @@ namespace BLL.Services
 
         public int CalculateStudentCoursePerformance(int studentID, CourseDTO course)
         {
-            throw new NotImplementedException();
+            Student student = db.Students.Get(studentID);
+            int studentPerformance = 0;
+            List<LectionResult> lectionsResults = student.LectionResults.Where(x => x.Course.CourseID == course.CourseID).ToList();
+            List<TestResult> testResults = student.TestResults.Where(x => x.Course.CourseID == course.CourseID).ToList();
+            foreach (LectionResult item in lectionsResults)
+            {
+                studentPerformance += item.Mark;
+            }
+            foreach (TestResult item in testResults)
+            {
+                studentPerformance += item.Mark;
+            }
+            return studentPerformance;
         }
 
         public int CalculateUserCoursePerformance(int userID, CourseDTO course)
         {
-            throw new NotImplementedException();
+            Student student = db.Students.Find(x => x.UserID == userID).FirstOrDefault();
+            int studentPerformance = 0;
+            List<LectionResult> lectionsResults = student.LectionResults.Where(x => x.Course.CourseID == course.CourseID).ToList();
+            List<TestResult> testResults = student.TestResults.Where(x => x.Course.CourseID == course.CourseID).ToList();
+            foreach (LectionResult item in lectionsResults)
+            {
+                studentPerformance += item.Mark;
+            }
+            foreach (TestResult item in testResults)
+            {
+                studentPerformance += item.Mark;
+            }
+            return studentPerformance;
         }
 
         public void DeleteCourse(CourseDTO course)
         {
-            throw new NotImplementedException();
+            db.Courses.Delete(course.CourseID);
+            db.Save();
         }
 
         public IEnumerable<CourseDTO> GetActiveForUser(int userID)
         {
-            throw new NotImplementedException();
+            Student student = db.Students.Find(x => x.UserID == userID).FirstOrDefault();
+            List<Course> activeCourses = student.Courses.Where(x => (x.StartDate.AddDays(x.DurationInDays)) > DateTime.Now).ToList();
+            List<CourseDTO> result = map.Map<List<CourseDTO>>(activeCourses);
+            return result;
         }
 
         public IEnumerable<CourseDTO> GetAllActive()
         {
-            throw new NotImplementedException();
+            IEnumerable<Course> courses = db.Courses.GetAll().Where(x => (x.StartDate.AddDays(x.DurationInDays)) > DateTime.Now);
+            List<CourseDTO> result = map.Map<List<CourseDTO>>(courses);
+            return result;
         }
 
         public IEnumerable<CourseDTO> GetAllArchived(DateTime timePoint)
         {
-            throw new NotImplementedException();
+            IEnumerable<Course> courses = db.Courses.GetAll().Where(x => (x.StartDate.AddDays(x.DurationInDays)) > timePoint);
+            List<CourseDTO> result = map.Map<List<CourseDTO>>(courses);
+            return result;
         }
 
         public IEnumerable<CourseDTO> GetArchivedForUser(int userID, DateTime timePoint)
         {
-            throw new NotImplementedException();
+            IEnumerable<Course> courses = db.Courses.GetAll().Where(x => (x.StartDate.AddDays(x.DurationInDays)) <= timePoint);
+            List<CourseDTO> result = map.Map<List<CourseDTO>>(courses);
+            return result;
         }
 
-        public IEnumerable<CourseDTO> GetByDate(int userID, DateTime timePoint)
+        public IEnumerable<CourseDTO> GetByDate(int studentID, DateTime timePoint)
         {
-            throw new NotImplementedException();
+            Student student = db.Students.Find(x => x.StudentID == studentID).FirstOrDefault();
+            List<Course> foundCourses = student.Courses.Where(x => x.StartDate.Date == timePoint.Date).ToList();
+            List<CourseDTO> result = map.Map<List<CourseDTO>>(foundCourses);
+            return result;
         }
 
         public CourseDTO GetByID(int courseID)
         {
-            throw new NotImplementedException();
+            Course course = db.Courses.Get(courseID);
+            return map.Map<CourseDTO>(course);
+        }
+
+        public IEnumerable<CourseDTO> GetByName(int studentID, string searchedName)
+        {
+            Student student = db.Students.Find(x => x.StudentID == studentID).FirstOrDefault();
+            List<Course> foundCourses = student.Courses.Where(x => x.Name.Contains(searchedName)).ToList();
+            List<CourseDTO> result = map.Map<List<CourseDTO>>(foundCourses);
+            return result;
         }
 
         public IEnumerable<CourseDTO> GetByName(string searchedName)
         {
-            throw new NotImplementedException();
+            List<Course> foundCourses = db.Courses.Find(x => x.Name.Contains(searchedName)).ToList();
+            List<CourseDTO> result = map.Map<List<CourseDTO>>(foundCourses);
+            return result;
         }
 
         public void StudentSignOut(int userID, CourseDTO course)
         {
-            throw new NotImplementedException();
+            Student student = db.Students.Find(x => x.UserID == userID).FirstOrDefault();
+            Course dbcourse = db.Courses.Get(course.CourseID);
+            student.Courses.Remove(dbcourse);
+            dbcourse.Students.Remove(student);
+            db.Save();
         }
 
         public void StudentSignUp(int userID, CourseDTO course)
         {
-            throw new NotImplementedException();
+            Student student = db.Students.Find(x => x.UserID == userID).FirstOrDefault();
+            Course dbcourse = db.Courses.Get(course.CourseID);
+            if (student.Courses.Where(x => x.CourseID == dbcourse.CourseID).Count() > 0)
+            {
+                return;
+            }
+            if (dbcourse.Students.Count() >= dbcourse.StudentsMaxQuantity)
+            {
+                student.Courses.Add(dbcourse);
+                dbcourse.Students.Add(student);
+                db.Save();
+            }
+            else
+            {
+                //throw exception
+            }
+        }
+
+        public void EditCourse(CourseDTO course)
+        {
+            //Course editedCourse = db.Courses.Get(course.CourseID);
+            Course editedCourse = map.Map<Course>(course);
+            db.Courses.Update(editedCourse);
+            db.Save();
+        }
+
+        public void CreateCourse(CourseDTO course)
+        {
+            Course newCourse = map.Map<Course>(course);
+            db.Courses.Add(newCourse);
+            db.Save();
         }
     }
 }

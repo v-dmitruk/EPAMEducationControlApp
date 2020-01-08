@@ -18,7 +18,7 @@ namespace BLL.Interfaces
         IEnumerable<LectionDTO> GetActiveByDate(int userID, DateTime date);
         IEnumerable<LectionDTO> GetActiveByName(int userID, string name);
         void EditLection(LectionDTO lection);
-        void DeleteScheduledLection(LectionDTO lection);//or lectionID??
+        void DeleteScheduledLection(LectionDTO lection, CourseDTO course);//or lectionID??
         void CreateLection(LectionDTO lection);
         void DeleteLection(LectionDTO lection);//or lectionID?
         void EditArchievedLection(LectionResultDTO lectionResult);

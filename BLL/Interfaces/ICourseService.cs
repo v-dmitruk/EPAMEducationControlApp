@@ -16,10 +16,13 @@ namespace BLL.Interfaces
         void DeleteCourse(CourseDTO course);
         IEnumerable<CourseDTO> GetAllActive();
         IEnumerable<CourseDTO> GetAllArchived(DateTime timePoint);
-        IEnumerable<CourseDTO> GetByName(string searchedName);
+        IEnumerable<CourseDTO> GetByName(int studentID, string searchedName);
         IEnumerable<CourseDTO> GetActiveForUser(int userID);
         IEnumerable<CourseDTO> GetArchivedForUser(int userID, DateTime timePoint);
         CourseDTO GetByID(int courseID);
         IEnumerable<CourseDTO> GetByDate(int userID, DateTime timePoint);
+        IEnumerable<CourseDTO> GetByName(string searchedName);
+        void EditCourse(CourseDTO course);
+        void CreateCourse(CourseDTO course);
     }
 }

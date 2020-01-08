@@ -73,6 +73,7 @@
     <Compile Include="Interfaces\ITestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CourseService.cs" />
+    <Compile Include="Services\LectionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
