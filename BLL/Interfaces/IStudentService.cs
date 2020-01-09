@@ -10,7 +10,7 @@ namespace BLL.Interfaces
     public interface IStudentService
     {
         IEnumerable<StudentDTO> GetAll();
-        IEnumerable<StudentDTO> GetByCourseName(string name);
+        IEnumerable<StudentDTO> GetByCourseID(int courseID);
         IEnumerable<StudentDTO> GetByName(string name);
         StudentDTO GetByID(int id);
         IEnumerable<StudentDTO> GetByBirthDayDate(DateTime birthDay);

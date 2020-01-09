@@ -94,7 +94,7 @@ namespace BLL.Services
         public IEnumerable<CourseDTO> GetByDate(int studentID, DateTime timePoint)
         {
             Student student = db.Students.Find(x => x.StudentID == studentID).FirstOrDefault();
-            List<Course> foundCourses = student.Courses.Where(x => x.StartDate.Date == timePoint.Date).ToList();
+            List<Course> foundCourses = student.Courses.Where(x => x.StartDate.Date <= timePoint.Date && x.StartDate.AddDays(x.DurationInDays).Date >= timePoint.Date).ToList();
             List<CourseDTO> result = map.Map<List<CourseDTO>>(foundCourses);
             return result;
         }
@@ -140,7 +140,7 @@ namespace BLL.Services
             if (dbcourse.Students.Count() >= dbcourse.StudentsMaxQuantity)
             {
                 student.Courses.Add(dbcourse);
-                dbcourse.Students.Add(student);
+                dbcourse.Students.Add(student); //если в базе окажется два одинаковых вхождения в промежуточной таблице, то удалить один из Add'ов
                 db.Save();
             }
             else
@@ -151,8 +151,8 @@ namespace BLL.Services
 
         public void EditCourse(CourseDTO course)
         {
-            //Course editedCourse = db.Courses.Get(course.CourseID);
-            Course editedCourse = map.Map<Course>(course);
+            Course editedCourse = db.Courses.Get(course.CourseID);
+            map.Map(course, editedCourse);
             db.Courses.Update(editedCourse);
             db.Save();
         }
@@ -162,6 +162,13 @@ namespace BLL.Services
             Course newCourse = map.Map<Course>(course);
             db.Courses.Add(newCourse);
             db.Save();
+        }
+
+        public IEnumerable<CourseDTO> GetAll()
+        {
+            IEnumerable<Course> courses = db.Courses.GetAll();
+            IEnumerable<CourseDTO> result = map.Map<IEnumerable<CourseDTO>>(courses);
+            return result;
         }
     }
 }

@@ -37,6 +37,7 @@ namespace DAL.EduDbContext
             modelBuilder.Configurations.Add(new LectionResultConfiguration());
             modelBuilder.Configurations.Add(new TestConfiguration());
             modelBuilder.Configurations.Add(new TestResultConfiguration());
+            modelBuilder.Configurations.Add(new ScheduledEventConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -107,7 +108,7 @@ namespace DAL.EduDbContext
             HasRequired(x => x.Course);
             HasOptional(x => x.Lection);
             HasOptional(x => x.Test);
-            HasRequired(x => x.Creator);
+            HasOptional(x => x.Creator);
         }
     }
 

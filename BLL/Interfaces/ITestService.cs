@@ -18,9 +18,10 @@ namespace BLL.Interfaces
         IEnumerable<TestDTO> GetActiveByDate(int userID, DateTime date);
         IEnumerable<TestDTO> GetActiveByName(int userID, string name);
         void EditTest(TestDTO test);
-        void DeleteScheduledTest(TestDTO test);
+        void DeleteScheduledTest(TestDTO test, CourseDTO course);
         void CreateTest(TestDTO test);
         void DeleteTest(TestDTO test);
         void ChangeArchievedTest(TestResultDTO test);
+        TestDTO GetByID(int testID);
     }
 }

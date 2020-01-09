@@ -24,5 +24,6 @@ namespace BLL.Interfaces
         IEnumerable<CourseDTO> GetByName(string searchedName);
         void EditCourse(CourseDTO course);
         void CreateCourse(CourseDTO course);
+        IEnumerable<CourseDTO> GetAll();
     }
 }

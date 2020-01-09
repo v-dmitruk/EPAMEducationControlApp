@@ -22,5 +22,6 @@ namespace BLL.Interfaces
         void CreateLection(LectionDTO lection);
         void DeleteLection(LectionDTO lection);//or lectionID?
         void EditArchievedLection(LectionResultDTO lectionResult);
+        LectionDTO GetByID(int lectionID);
     }
 }
