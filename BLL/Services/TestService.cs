@@ -16,7 +16,10 @@ namespace BLL.Services
     {
         Mapper map = new Mapper(MapperProfile.Configured());
         IUnitOfWork db { get; set; }
-
+        public TestService(IUnitOfWork uow)
+        {
+            db = uow;
+        }
         public void ChangeArchievedTest(TestResultDTO test)
         {
             TestResult editedTestResult = db.TestResults.Get(test.TestResultID);

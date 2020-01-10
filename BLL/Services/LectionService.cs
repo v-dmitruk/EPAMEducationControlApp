@@ -14,8 +14,14 @@ namespace BLL.Services
 {
     public class LectionService : ILectionService
     {
+
         Mapper map = new Mapper(MapperProfile.Configured());
         IUnitOfWork db { get; set; }
+
+        public LectionService(IUnitOfWork uow)
+        {
+            db = uow;
+        }
         public void CreateLection(LectionDTO lection)
         {
             Lection newLection = map.Map<Lection>(lection);

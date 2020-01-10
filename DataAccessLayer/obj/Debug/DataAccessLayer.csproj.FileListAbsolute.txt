@@ -1,1 +1,14 @@
 C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\bin\Debug\AutoMapper.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\bin\Debug\AutoMapper.pdb
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\bin\Debug\AutoMapper.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

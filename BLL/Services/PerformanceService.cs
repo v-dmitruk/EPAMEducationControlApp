@@ -16,7 +16,10 @@ namespace BLL.Services
     {
         Mapper map = new Mapper(MapperProfile.Configured());
         IUnitOfWork db { get; set; }
-
+        public PerformanceService(IUnitOfWork uow)
+        {
+            db = uow;
+        }
         public void DeleteLectionResult(int lectionResultID)
         {
             db.LectionResults.Delete(lectionResultID);

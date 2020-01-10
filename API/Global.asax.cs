@@ -1,3 +1,8 @@
+using API.Infrastructure;
+using BLL.Infrastructure;
+using Ninject;
+using Ninject.Modules;
+using Ninject.Web.WebApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +23,19 @@ namespace API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
+            GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
+
+            //dependencies
+            //TODO connectionString 
+            //Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DAL.EduDbContext;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
+            NinjectModule servicesModule = new ServicesModule("DefaultConnection");
+            NinjectModule serviceModule = new ServiceModule();
+            var kernel = new StandardKernel(servicesModule, serviceModule);
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }

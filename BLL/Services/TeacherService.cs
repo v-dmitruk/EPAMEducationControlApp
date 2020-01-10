@@ -16,6 +16,10 @@ namespace BLL.Services
     {
         Mapper map = new Mapper(MapperProfile.Configured());
         IUnitOfWork db { get; set; }
+        public TeacherService(IUnitOfWork uow)
+        {
+            db = uow;
+        }
 
         public void AddTeacher(TeacherDTO teacher)
         {

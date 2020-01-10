@@ -8,7 +8,7 @@ namespace BLL.DTOModels
 {
     public class ScheduledEventDTO
     {
-        public int ScheduledEventID;
+        public int ScheduledEventID { get; }
         public CourseDTO Course { get; set; }
         public LectionDTO Lection { get; set; }
         public TestDTO Test { get; set; }

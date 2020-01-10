@@ -16,6 +16,10 @@ namespace BLL.Services
     {
         Mapper map = new Mapper(MapperProfile.Configured());
         IUnitOfWork db { get; set; }
+        public QuestionService(IUnitOfWork uow)
+        {
+            db = uow;
+        }
         public void AddQuestion(QuestionDTO question)
         {
             Question newQuestion = map.Map<Question>(question);

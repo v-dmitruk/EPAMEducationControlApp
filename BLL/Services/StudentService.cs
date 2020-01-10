@@ -16,6 +16,10 @@ namespace BLL.Services
     {
         Mapper map = new Mapper(MapperProfile.Configured());
         IUnitOfWork db { get; set; }
+        public StudentService(IUnitOfWork uow)
+        {
+            db = uow;
+        }
         public void AddStudent(StudentDTO student)
         {
             Student newStudent = map.Map<Student>(student);

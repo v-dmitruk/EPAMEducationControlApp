@@ -3,3 +3,17 @@ C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\BLL.pdb
 C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
 C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\obj\Debug\BLL.dll
 C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\obj\Debug\BLL.pdb
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\BLL.dll.config
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\AutoMapper.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\DataAccessLayer.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\EntityFramework.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\DataAccessLayer.pdb
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\DataAccessLayer.dll.config
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\AutoMapper.pdb
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\AutoMapper.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\EntityFramework.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\Ninject.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\Ninject.xml
