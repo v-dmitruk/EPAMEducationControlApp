@@ -7,8 +7,8 @@ namespace DAL.Models
 {
     public class Course
     {
-        [Key, Required]
-        public int CourseID { get; }
+        [Key]
+        public int CourseID { get; set; }
         [MaxLength(100), Required]
         public string Name { get; set; }
         [Required, MaxLength(1500)]
@@ -19,15 +19,18 @@ namespace DAL.Models
         public int MaxScore { get; set; }
         [Required]
         public int MinRequiredScore { get; set; }
-        public Teacher Creator { get; }
+        public virtual Teacher Creator { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
-        public DateTime CreationDate { get; }
+        public DateTime CreationDate { get; set; }
         [Required]
         public int DurationInDays { get; set; }
-        public List<Lection> Lections { get; set; } = new List<Lection>();
-        public List<Student> Students { get; set; } = new List<Student>();
-        public List<Test> Tests { get; set; } = new List<Test>();
+        public virtual List<Lection> Lections { get; set; } = new List<Lection>();
+        public virtual List<Student> Students { get; set; } = new List<Student>();
+        public virtual List<Test> Tests { get; set; } = new List<Test>();
+        public virtual List<LectionResult> LectionResults { get; set; } = new List<LectionResult>();
+        public virtual List<TestResult> TestResults { get; set; } = new List<TestResult>();
+        public virtual List<ScheduledEvent> ScheduledEvents { get; set; } = new List<ScheduledEvent>();
         public Course(string name, string description, int studensMaxQuantity, int maxScore, int minScore, Teacher creator, DateTime startDate, int duration)
         {
             CreationDate = DateTime.Now;
@@ -39,6 +42,10 @@ namespace DAL.Models
             MinRequiredScore = minScore;
             StartDate = startDate;
             DurationInDays = duration;
+        }
+        public Course()
+        {
+
         }
     }
 }

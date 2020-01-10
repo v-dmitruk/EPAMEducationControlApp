@@ -26,6 +26,7 @@ namespace DAL.EduDbContext
         public EduDBContext(string connectionString)
             : base(connectionString)
         {
+            base.Configuration.ProxyCreationEnabled = true;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -38,6 +39,8 @@ namespace DAL.EduDbContext
             modelBuilder.Configurations.Add(new TestConfiguration());
             modelBuilder.Configurations.Add(new TestResultConfiguration());
             modelBuilder.Configurations.Add(new ScheduledEventConfiguration());
+            modelBuilder.Configurations.Add(new QuestionConfiguration());
+            modelBuilder.Configurations.Add(new LectionConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -49,10 +52,11 @@ namespace DAL.EduDbContext
     {
         public TeacherConfiguration()
         {
-            HasMany(p => p.CreatedQuestions).WithOptional(p => p.Creator).HasForeignKey(s => s.Creator).WillCascadeOnDelete(false); 
-            HasMany(p => p.CreatedLections).WithOptional(p => p.Creator).HasForeignKey(s => s.Creator).WillCascadeOnDelete(false); ;
-            HasMany(p => p.CreatedTests).WithOptional(p => p.Creator).HasForeignKey(s => s.Creator).WillCascadeOnDelete(false); ;
-            HasMany(p => p.Courses).WithOptional(p => p.Creator).HasForeignKey(s => s.Creator).WillCascadeOnDelete(false); ;
+            HasMany(p => p.CreatedQuestions).WithOptional(p => p.Creator); 
+            HasMany(p => p.CreatedLections).WithOptional(p => p.Creator);
+            HasMany(p => p.CreatedTests).WithOptional(p => p.Creator);
+            HasMany(p => p.Courses).WithRequired(p => p.Creator);
+            HasMany(x => x.ScheduledEvents).WithOptional(x => x.Creator);            
         }
     }
 
@@ -72,6 +76,9 @@ namespace DAL.EduDbContext
         {
             HasMany(x => x.Lections).WithMany(x => x.Courses);
             HasMany(x => x.Tests).WithMany(x => x.Courses);
+            HasMany(x => x.LectionResults).WithRequired(x => x.Course);
+            HasMany(x => x.TestResults).WithRequired(x => x.Course);
+            HasMany(x => x.ScheduledEvents).WithRequired(x => x.Course);
         }
     }
 
@@ -79,8 +86,8 @@ namespace DAL.EduDbContext
     {
         public LectionResultConfiguration()
         {
-            HasOptional(x => x.Lection);
-            HasRequired(x => x.Course);
+            //HasOptional(x => x.Lection).WithMany(x => x.LectionResults);
+            //HasRequired(x => x.Course).WithMany(x => x.LectionResults);
         }
     }
 
@@ -88,7 +95,9 @@ namespace DAL.EduDbContext
     {
         public TestConfiguration()
         {
-            HasMany(x => x.Questions);   
+            HasMany(x => x.TestResults).WithOptional(x => x.Test);
+            HasMany(x => x.Questions);
+            HasMany(x => x.ScheduledEvents).WithRequired(x => x.Test);
         }
     }
 
@@ -96,8 +105,8 @@ namespace DAL.EduDbContext
     {
         public TestResultConfiguration()
         {
-            HasRequired(x => x.Course);
-            HasOptional(x => x.Test);
+            //HasRequired(x => x.Course).WithMany(x => x.TestResults);
+            //HasOptional(x => x.Test).WithMany(x => x.TestResults);
         }
     }
 
@@ -105,10 +114,27 @@ namespace DAL.EduDbContext
     {
         public ScheduledEventConfiguration()
         {
-            HasRequired(x => x.Course);
-            HasOptional(x => x.Lection);
-            HasOptional(x => x.Test);
-            HasOptional(x => x.Creator);
+            //HasRequired(x => x.Course);
+            //HasOptional(x => x.Lection);
+            //HasOptional(x => x.Test);
+            //HasOptional(x => x.Creator);
+        }
+    }
+
+    class LectionConfiguration : EntityTypeConfiguration<Lection>
+    {
+        public LectionConfiguration()
+        {
+            HasMany(x => x.LectionResults).WithOptional(x => x.Lection);
+            HasMany(x => x.ScheduledEvents).WithRequired(x => x.Lection);
+        }
+    }
+
+    class QuestionConfiguration : EntityTypeConfiguration<Question>
+    {
+        public QuestionConfiguration()
+        {
+
         }
     }
 

@@ -8,19 +8,15 @@ namespace BLL.DTOModels
 {
     public class TestResultDTO
     {
-        public int TestResultID { get; }
-        public TestDTO Test { get; }
-        public StudentDTO Student { get; }
+        public int TestResultID { get; set; }
+        public TestDTO Test { get; set; }
+        public StudentDTO Student { get; set; }
         public int Mark { get; set; }
-        public DateTime PassDate { get; }
-        public CourseDTO Course { get; }
-        public TestResultDTO(TestDTO test, StudentDTO student, int mark, CourseDTO course)
+        public DateTime PassDate { get; set; }
+        public CourseDTO Course { get; set; }
+        public TestResultDTO()
         {
-            Test = test;
-            Student = student;
-            Mark = mark;
-            PassDate = DateTime.Now;
-            Course = course;
+
         }
     }
 }

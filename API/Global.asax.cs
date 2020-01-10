@@ -5,6 +5,7 @@ using Ninject.Modules;
 using Ninject.Web.WebApi;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -31,10 +32,10 @@ namespace API
             //dependencies
             //TODO connectionString 
             //Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DAL.EduDbContext;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
-            NinjectModule servicesModule = new ServicesModule("DefaultConnection");
+            NinjectModule servicesModule = new ServicesModule(ConfigurationManager.ConnectionStrings["EduDb"].ToString());
             NinjectModule serviceModule = new ServiceModule();
             var kernel = new StandardKernel(servicesModule, serviceModule);
-            GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+            //GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
             //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }

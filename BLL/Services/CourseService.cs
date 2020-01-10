@@ -167,7 +167,7 @@ namespace BLL.Services
         public IEnumerable<CourseDTO> GetAll()
         {
             IEnumerable<Course> courses = db.Courses.GetAll();
-            IEnumerable<CourseDTO> result = map.Map<IEnumerable<CourseDTO>>(courses);
+            IEnumerable<CourseDTO> result = map.Map<List<CourseDTO>>(courses);
             return result;
         }
     }

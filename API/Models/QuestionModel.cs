@@ -7,9 +7,9 @@ namespace API.Models
 {
     public class QuestionModel
     {
-        public int QuestionID { get; }
-        public TeacherModel Creator { get; }
-        public DateTime CreationDate { get; }
+        public int QuestionID { get; set; }
+        public TeacherModel Creator { get; set; }
+        public DateTime CreationDate { get; set; }
         public string QuestionBody { get; set; }
         public string Answer1 { get; set; }
         public string Answer2 { get; set; }
@@ -17,5 +17,9 @@ namespace API.Models
         public string Answer4 { get; set; }
         public int RightAnswer { get; set; }
         public string Category { get; set; }
+        public QuestionModel()
+        {
+
+        }
     }
 }

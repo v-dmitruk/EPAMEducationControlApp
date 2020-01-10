@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DAL.Interfaces;
 using DAL.Models;
 using DAL.EduDbContext;
+using System.Data.Entity;
 
 namespace DataAccessLayer.Repositories
 {

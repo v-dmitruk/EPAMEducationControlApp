@@ -7,8 +7,12 @@ namespace API.Models
 {
     public class TeacherModel
     {
-        public int TeacherID { get; }
-        public int UserID { get; private set; }
+        public TeacherModel()
+        {
+        }
+
+        public int TeacherID { get; set; }
+        public int UserID { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Description { get; set; }

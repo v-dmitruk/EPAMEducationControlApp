@@ -8,19 +8,15 @@ namespace BLL.DTOModels
 {
     public class ScheduledEventDTO
     {
-        public int ScheduledEventID { get; }
+        public int ScheduledEventID { get; set; }
         public CourseDTO Course { get; set; }
         public LectionDTO Lection { get; set; }
         public TestDTO Test { get; set; }
         public DateTime Date { get; set; }
-        public DateTime CreationDate { get; }
-        public ScheduledEventDTO(CourseDTO course, LectionDTO lection, TestDTO test, DateTime date)
+        public DateTime CreationDate { get; set; }
+        public ScheduledEventDTO()
         {
-            Course = course;
-            Lection = lection;
-            Test = test;
-            Date = date;
-            CreationDate = DateTime.Now;
+
         }
     }
 }

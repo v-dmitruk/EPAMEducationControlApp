@@ -6,12 +6,12 @@ namespace DAL.Models
 {
     public class Question
     {
-        [Key, Required]
-        public int QuestionID { get; }
-        public Teacher Creator { get; }
+        [Key]
+        public int QuestionID { get; set; }
+        public virtual Teacher Creator { get; set; }
         [Required, MaxLength(50)]
         public string Category { get; set; }
-        public DateTime CreationDate { get; }
+        public DateTime CreationDate { get; set; }
         [Required, MaxLength(2000)]
         public string QuestionBody { get; set; }
         [MaxLength(2000)]
@@ -36,6 +36,8 @@ namespace DAL.Models
             RightAnswer = rightAnswer;
             Category = category;
         }
-
+        public Question()
+        {
+        }
     }
 }

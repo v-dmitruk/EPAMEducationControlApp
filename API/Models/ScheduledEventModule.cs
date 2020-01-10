@@ -7,11 +7,16 @@ namespace API.Models
 {
     public class ScheduledEventModule
     {
-        public int ScheduledEventID { get; }
+        public ScheduledEventModule()
+        {
+        }
+
+        public int ScheduledEventID { get; set; }
         public CourseModel Course { get; set; }
         public LectionModel Lection { get; set; }
         public TestModel Test { get; set; }
         public DateTime Date { get; set; }
-        public DateTime CreationDate { get; }
+        public DateTime CreationDate { get; set; }
+
     }
 }

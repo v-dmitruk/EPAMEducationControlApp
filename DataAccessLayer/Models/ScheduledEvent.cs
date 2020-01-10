@@ -8,16 +8,16 @@ namespace DAL.Models
 {
     public class ScheduledEvent
     {
-        [Key, Required]
-        public int ScheduledEventID;
-        public Course Course { get; set; }
-        public Lection Lection { get; set; }
-        public Test Test { get; set; }
+        [Key]
+        public int ScheduledEventID { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual Lection Lection { get; set; }
+        public virtual Test Test { get; set; }
         [Required]
         public DateTime Date { get; set; }
         //[Required]
-        public Teacher Creator { get; }
-        public DateTime CreationDate { get; }
+        public virtual Teacher Creator { get; set; }
+        public DateTime CreationDate { get; set; }
         public ScheduledEvent(Course course, Lection lection, Test test, DateTime date, Teacher teacher)
         {
             Course = course;
@@ -26,6 +26,10 @@ namespace DAL.Models
             Date = date;
             CreationDate = DateTime.Now;
             Creator = teacher;
+        }
+        public ScheduledEvent()
+        {
+
         }
     }
 }

@@ -7,8 +7,8 @@ namespace DAL.Models
 {
     public class Lection
     {
-        [Required, Key]
-        public int LectionID { get; }
+        [Key]
+        public int LectionID { get; set; }
         [MaxLength(20), Required]
         public string LectionType { get; set; }
         [MaxLength(100), Required]
@@ -21,9 +21,11 @@ namespace DAL.Models
         public int MaxMark { get; set; }
         [Required]
         public bool AdditionalMarkIsAvailable { get; set; }
-        public Teacher Creator { get; }
-        public DateTime CreationDate { get; }
-        public List<Course> Courses { get; set; } = new List<Course>();
+        public virtual Teacher Creator { get; set; }
+        public DateTime CreationDate { get; set; }
+        public virtual List<Course> Courses { get; set; } = new List<Course>();
+        public virtual List<LectionResult> LectionResults { get; set; } = new List<LectionResult>();
+        public virtual List<ScheduledEvent> ScheduledEvents { get; set; } = new List<ScheduledEvent>();
         public Lection(string type, string name, string description, string body, int maxMark, bool availability, Teacher creator)
         {
             LectionType = type;
@@ -34,6 +36,10 @@ namespace DAL.Models
             AdditionalMarkIsAvailable = availability;
             Creator = creator;
             CreationDate = DateTime.Now;
+        }
+        public Lection()
+        {
+
         }
     }
 

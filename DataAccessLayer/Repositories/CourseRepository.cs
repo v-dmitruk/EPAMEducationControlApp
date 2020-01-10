@@ -41,7 +41,7 @@ namespace DataAccessLayer.Repositories
 
         public IEnumerable<Course> GetAll()
         {
-            return _db.Courses;
+            return _db.Courses.ToList();
         }
 
         public void Update(Course item)

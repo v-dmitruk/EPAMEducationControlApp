@@ -7,11 +7,15 @@ namespace API.Models
 {
     public class TestResultModel
     {
-        public int TestResultID { get; }
-        public TestModel Test { get; }
-        public StudentModel Student { get; }
+        public TestResultModel()
+        {
+        }
+
+        public int TestResultID { get; set; }
+        public TestModel Test { get; set; }
+        public StudentModel Student { get; set; }
         public int Mark { get; set; }
-        public DateTime PassDate { get; }
-        public CourseModel Course { get; }
+        public DateTime PassDate { get; set; }
+        public CourseModel Course { get; set; }
     }
 }

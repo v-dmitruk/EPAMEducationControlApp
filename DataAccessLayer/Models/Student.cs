@@ -9,8 +9,8 @@ namespace DAL.Models
     public class Student
     {
         [Key]
-        public int StudentID { get; }
-        public int UserID { get; private set; }
+        public int StudentID { get; set; }
+        public int UserID { get; set; }
         [Required, MaxLength(40)]
         public string Name { get; set; }
         [Required, MaxLength(40)]
@@ -19,9 +19,9 @@ namespace DAL.Models
         public string Description { get; set; }
         [Required]
         public DateTime BirthDate { get; set; }
-        public List<Course> Courses { get; set; } = new List<Course>();
-        public List<LectionResult> LectionResults { get; set; } = new List<LectionResult>();
-        public List<TestResult> TestResults { get; set; } = new List<TestResult>();
+        public virtual List<Course> Courses { get; set; } = new List<Course>();
+        public virtual List<LectionResult> LectionResults { get; set; } = new List<LectionResult>();
+        public virtual List<TestResult> TestResults { get; set; } = new List<TestResult>();
         public Student(int userID, string name, string lastName, string description, DateTime birthDate)
         {
             UserID = userID;
@@ -33,6 +33,10 @@ namespace DAL.Models
         public void UserRegistered(int userID)
         {
             UserID = userID;
+        }
+        public Student()
+        {
+
         }
     }
 }

@@ -7,14 +7,14 @@ namespace DAL.Models
     public class TestResult
     {
         [Key]
-        public int TestResultID { get; }
-        public Test Test { get; }
-        public Student Student { get; }
+        public int TestResultID { get; set; }
+        public virtual Test Test { get; set; }
+        public virtual Student Student { get; set; }
         [Required]
         public int Mark { get; set; }
         [Required]
-        public DateTime PassDate { get; }
-        public Course Course { get; }
+        public DateTime PassDate { get; set; }
+        public virtual Course Course { get; set; }
         public TestResult(Test test, Student student, int mark, Course course)
         {
             Test = test;
@@ -22,6 +22,10 @@ namespace DAL.Models
             Mark = mark;
             PassDate = DateTime.Now;
             Course = course;
+        }
+        public TestResult()
+        {
+
         }
     }
 }

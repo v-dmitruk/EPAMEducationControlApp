@@ -8,23 +8,17 @@ namespace BLL.DTOModels
 {
     public class LectionResultDTO
     {
-        public int LectionResultID { get; }
-        public LectionDTO Lection { get; }
-        public StudentDTO Student { get; }
+        public int LectionResultID { get; set; }
+        public LectionDTO Lection { get; set; }
+        public StudentDTO Student { get; set; }
         public int Mark { get; set; }
         public int AdditionalMark { get; set; }
-        public DateTime Date { get; }
-        public CourseDTO Course { get; }
+        public DateTime Date { get; set; }
+        public CourseDTO Course { get; set; }
         public bool IsVisited { get; set; }
-        public LectionResultDTO(LectionDTO lection, StudentDTO student, int mark, int addMark, DateTime date, CourseDTO course, bool visited)
+        public LectionResultDTO()
         {
-            Lection = lection;
-            Student = student;
-            Mark = mark;
-            AdditionalMark = addMark;
-            Date = date;
-            Course = course;
-            IsVisited = visited;
+
         }
     }
 }
