@@ -43,6 +43,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -156,6 +162,7 @@
     <Compile Include="DTOModels\TeacherDTO.cs" />
     <Compile Include="DTOModels\TestDTO.cs" />
     <Compile Include="DTOModels\TestResultDTO.cs" />
+    <Compile Include="DTOModels\UserDTO.cs" />
     <Compile Include="Infrastructure\CustomExceptions.cs" />
     <Compile Include="Infrastructure\MapperProfile.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
@@ -164,18 +171,22 @@
     <Compile Include="Interfaces\ILectionService.cs" />
     <Compile Include="Interfaces\IPerformanceService.cs" />
     <Compile Include="Interfaces\IQuestionService.cs" />
+    <Compile Include="Interfaces\IServiceCreator.cs" />
     <Compile Include="Interfaces\IStudentService.cs" />
     <Compile Include="Interfaces\ITeacherService.cs" />
     <Compile Include="Interfaces\ITestService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BLLUnitOfWork.cs" />
     <Compile Include="Services\CourseService.cs" />
     <Compile Include="Services\LectionService.cs" />
     <Compile Include="Services\PerformanceService.cs" />
     <Compile Include="Services\QuestionService.cs" />
+    <Compile Include="Services\ServiceCreator.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="Services\TeacherService.cs" />
     <Compile Include="Services\TestService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -185,6 +196,10 @@
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
       <Project>{24814645-1190-4458-8cac-91fe49de7ab2}</Project>
       <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserDAL\UserDAL.csproj">
+      <Project>{F6C721AC-3016-4D81-A008-3899E5CB82C0}</Project>
+      <Name>UserDAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

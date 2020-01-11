@@ -1,0 +1,15 @@
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\UserDAL.dll.config
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\UserDAL.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\UserDAL.pdb
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\EntityFramework.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\EntityFramework.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\obj\Debug\UserDAL.csprojAssemblyReference.cache
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\obj\Debug\UserDAL.csproj.CopyComplete
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\obj\Debug\UserDAL.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\UserDAL\obj\Debug\UserDAL.pdb

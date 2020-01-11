@@ -80,3 +80,10 @@ C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\pt-BR\Microsof
 C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
 C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\UserDAL.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\UserDAL.pdb
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\UserDAL.dll.config
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

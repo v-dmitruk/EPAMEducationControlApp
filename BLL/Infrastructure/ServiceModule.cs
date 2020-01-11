@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserDAL.Interfaces;
+using UserDAL.Repository;
 
 namespace BLL.Infrastructure
 {
@@ -20,6 +22,7 @@ namespace BLL.Infrastructure
         {
             //Bind<IUnitOfWork>().To<UnitOfWork>().WithConstructorArgument(connectString);
             Bind<IUnitOfWork>().To<UnitOfWork>();
+            Bind<IUserUnitOfWork>().To<UserUnitOfWork>();
         }
     }
 }

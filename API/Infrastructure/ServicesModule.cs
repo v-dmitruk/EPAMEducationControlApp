@@ -18,6 +18,7 @@ namespace API.Infrastructure
         public override void Load()
         {
             Bind<IBLLUnitOfWork>().To<BLLUnitOfWork>().WithConstructorArgument(connectString);
+            Bind<IServiceCreator>().To<ServiceCreator>();
         }
     }
 }

@@ -6,7 +6,7 @@
                     User Registration
                 </h2> 
             </div>
-            <form class="col s12 white" class="validate" #userRegistrationForm="ngForm">
+            <form class="col s12 white" class="validate" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
                 <div class="row">
                     <div class="input-field col s6">
                         <input class="validate" type="text" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" required>
@@ -33,7 +33,7 @@
                         <label>LastName</label>
                     </div>
                     <div class="input-field col s4">
-                        <input type="text" class="datepicker" #BirthdayDate="ngModel" [(ngModel)]="user.BirthdayDate">
+                        <input type="text" bsDatepicker class="form-control" name="BirthdayDate" #BirthdayDate="ngModel" [(ngModel)]="user.BirthdayDate">
                         <label>BirthdayDate</label>
                     </div>
                 </div>
