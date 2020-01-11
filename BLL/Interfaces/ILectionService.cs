@@ -11,7 +11,7 @@ namespace BLL.Interfaces
     {
         IEnumerable<LectionDTO> GetAll();
         IEnumerable<LectionDTO> GetByName(string name);
-        IEnumerable<LectionResultDTO> GetAllArchieved(int userID);
+        IEnumerable<LectionResultDTO> GetAllArchieved();
         IEnumerable<LectionResultDTO> GetArchievedByDate(int userID, DateTime date);
         IEnumerable<LectionResultDTO> GetArchievedByName(int userID, string name);
         IEnumerable<LectionDTO> GetAllActive(int userID);

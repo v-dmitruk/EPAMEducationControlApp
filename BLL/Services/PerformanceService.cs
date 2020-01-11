@@ -69,5 +69,19 @@ namespace BLL.Services
             List<TestResultDTO> result = map.Map<List<TestResultDTO>>(found);
             return result;
         }
+
+        public void AddTestResult(TestResultDTO testResult)
+        {
+            TestResult newTestResult = map.Map<TestResult>(testResult);
+            db.TestResults.Add(newTestResult);
+            db.Save();
+        }
+
+        public void AddLectionResult(LectionResultDTO lectionResult)
+        {
+            LectionResult newLection = map.Map<LectionResult>(lectionResult);
+            db.LectionResults.Add(newLection);
+            db.Save();
+        }
     }
 }

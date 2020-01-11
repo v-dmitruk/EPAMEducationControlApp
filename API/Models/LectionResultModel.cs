@@ -7,6 +7,7 @@ namespace API.Models
 {
     public class LectionResultModel
     {
+        [System.ComponentModel.DataAnnotations.Required]
         public int LectionResultID { get; set; }
         public LectionModel Lection { get; set; }
         public StudentModel Student { get; set; }

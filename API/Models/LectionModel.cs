@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace API.Models
 {
     public class LectionModel
     {
+        [Required]
         public int LectionID { get; set; }
         public string LectionType { get; set; }
         public string Name { get; set; }

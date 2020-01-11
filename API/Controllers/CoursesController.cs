@@ -1,6 +1,7 @@
 ﻿using API.Infrastructure;
 using API.Models;
 using AutoMapper;
+using BLL.DTOModels;
 using BLL.Interfaces;
 using BLL.Services;
 using System;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace API.Controllers
 {
@@ -26,24 +28,70 @@ namespace API.Controllers
         }
 
         // GET: api/Courses/5
-        public string Get(int id)
+        public CourseModel Get(int id)
         {
-            return "value";
+            CourseModel result = map.Map<CourseModel>(_db.CourseService.GetByID(id));
+            return result;
         }
 
         // POST: api/Courses
-        public void Post([FromBody]string value)
+        [ResponseType(typeof(CourseModel))]
+        public IHttpActionResult Post(CourseModel value)
         {
+            _db.CourseService.CreateCourse(map.Map<CourseDTO>(value));
+            return CreatedAtRoute("DefaultApi", new {  }, value);
         }
 
         // PUT: api/Courses/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(int id, CourseModel value)
         {
+            if (id != value.CourseID)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                CourseDTO edited = map.Map<CourseDTO>(value);
+                _db.CourseService.EditCourse(edited);
+            }
+            catch 
+            {
+                if (!CourseExists(id))
+                    return NotFound();
+                else
+                {
+                    throw;
+                }
+            }
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        private bool CourseExists(int id)
+        {
+            return _db.CourseService.GetAll().Count(x => x.CourseID == id) > 0;
         }
 
         // DELETE: api/Courses/5
-        public void Delete(int id)
+        [ResponseType(typeof(CourseModel))]
+        public IHttpActionResult Delete(int id)
         {
+            CourseDTO course = _db.CourseService.GetByID(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            _db.CourseService.DeleteCourse(course);
+            return Ok(course);
         }
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        CourseService.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

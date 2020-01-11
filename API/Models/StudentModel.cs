@@ -10,7 +10,7 @@ namespace API.Models
         public StudentModel()
         {
         }
-
+        [System.ComponentModel.DataAnnotations.Required]
         public int StudentID { get; set; }
         public int UserID { get; set; }
         public string Name { get; set; }

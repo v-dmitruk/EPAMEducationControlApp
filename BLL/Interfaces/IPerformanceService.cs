@@ -17,5 +17,7 @@ namespace BLL.Interfaces
         //TestResult, LectionResult EDIT-methods are in LectionService and TestService
         void DeleteTestResult(int testResultID);
         void DeleteLectionResult(int lectionResultID);
+        void AddTestResult(TestResultDTO testResult);
+        void AddLectionResult(LectionResultDTO lectionResult);
     }
 }

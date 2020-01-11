@@ -107,10 +107,9 @@ namespace BLL.Services
             return result;
         }
 
-        public IEnumerable<LectionResultDTO> GetAllArchieved(int userID)
+        public IEnumerable<LectionResultDTO> GetAllArchieved()
         {
-            Student student = db.Students.Find(x => x.UserID == userID).FirstOrDefault();
-            List <LectionResultDTO> result = map.Map<List<LectionResultDTO>>(student.LectionResults);
+            List <LectionResultDTO> result = map.Map<List<LectionResultDTO>>(db.LectionResults.GetAll());
             return result;
         }
 

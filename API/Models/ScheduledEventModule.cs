@@ -10,7 +10,7 @@ namespace API.Models
         public ScheduledEventModule()
         {
         }
-
+        [System.ComponentModel.DataAnnotations.Required]
         public int ScheduledEventID { get; set; }
         public CourseModel Course { get; set; }
         public LectionModel Lection { get; set; }
