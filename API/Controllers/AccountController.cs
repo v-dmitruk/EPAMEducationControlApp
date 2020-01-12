@@ -36,8 +36,10 @@ namespace API.Controllers
         }
 
 
+        //// Cookie based authorization
         //[HttpPost]
-        //public async Task<ActionResult> Login(LoginModel model)
+        //[Route("api/User/LogIn")]
+        //public async Task<IHttpActionResult> Login(LoginModel model)
         //{
         //    await SetInitialDataAsync();
         //    if (ModelState.IsValid)
@@ -54,14 +56,46 @@ namespace API.Controllers
         //            AuthenticationManager.SignIn(new AuthenticationProperties
         //            {
         //                IsPersistent = true
-        //            }, claim);
-        //            return RedirectToAction("Index", "Home");
+        //            }, claim);                    
         //        }
+        //        return Ok();
         //    }
-        //    return View(model);
+        //    return BadRequest();
         //}
 
+
+        [HttpGet]
+        [Route("api/GetUserClaims")]
+        public AccountModel GetUserClaims()
+        {
+            var identityClaims = (ClaimsIdentity)User.Identity;
+            IEnumerable<Claim> claims = identityClaims.Claims;
+            try
+            {
+                AccountModel model = new AccountModel()
+                {
+                    Id = identityClaims.FindFirst("UserID").Value,
+                    UserName = identityClaims.FindFirst("Username").Value,
+                    Email = identityClaims.FindFirst("Email").Value,
+                    FirstName = identityClaims.FindFirst("FirstName").Value,
+                    LastName = identityClaims.FindFirst("LastName").Value,
+                    BirthdayDate = identityClaims.FindFirst("BirthdayDate").Value,
+                    LoggedOn = identityClaims.FindFirst("LoggedOn").Value,
+                    Expired = identityClaims.FindFirst("Expiration").Value,
+                    Role = identityClaims.FindFirst("Role").Value
+                };
+                return model;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+        [HttpGet]
         [Route("api/User/LogOut")]
+        [AllowAnonymous]
         public IHttpActionResult Logout()
         {
             AuthenticationManager.SignOut();
@@ -71,9 +105,10 @@ namespace API.Controllers
 
         [Route("api/User/Register")]
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IdentityResult> Register(AccountModel model)
         {
-            //await SetInitialDataAsync();
+            await SetInitialDataAsync();
             UserDTO userDto = new UserDTO
             {
                 Email = model.Email,
@@ -81,7 +116,7 @@ namespace API.Controllers
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 UserName = model.UserName,
-                BirthdayDate = model.BirthdayDate,
+                BirthdayDate = Convert.ToDateTime(model.BirthdayDate),
                 Role = "visitor"
             };
             try

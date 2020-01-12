@@ -200,3 +200,5 @@ C:\Users\nyker\source\repos\EPAMEducationControlApp\API\bin\Microsoft.Owin.Secur
 C:\Users\nyker\source\repos\EPAMEducationControlApp\API\bin\UserDAL.pdb
 C:\Users\nyker\source\repos\EPAMEducationControlApp\API\bin\UserDAL.dll.config
 C:\Users\nyker\source\repos\EPAMEducationControlApp\API\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\nyker\source\repos\EPAMEducationControlApp\API\bin\Microsoft.Owin.Cors.dll
+C:\Users\nyker\source\repos\EPAMEducationControlApp\API\bin\Microsoft.Owin.Cors.xml

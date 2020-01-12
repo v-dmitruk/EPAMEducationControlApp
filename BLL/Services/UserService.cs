@@ -34,7 +34,7 @@ namespace BLL.Services
                 // добавляем роль
                 await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
                 // создаем профиль клиента
-                ClientProfile clientProfile = new ClientProfile { Id = user.Id, Email = userDto.Email, UserName = userDto.UserName, BirthdayDate = userDto.BirthdayDate, FirstName = userDto.FirstName, LastName = userDto.LastName };
+                ClientProfile clientProfile = new ClientProfile { Id = user.Id, Email = userDto.Email, UserName = userDto.UserName, BirthdayDate = userDto.BirthdayDate, FirstName = userDto.FirstName, LastName = userDto.LastName, Role = userDto.Role };
                 clientProfile.ApplicationUser = user;
                 Database.ClientManager.Create(clientProfile);
                 await Database.SaveAsync();
@@ -88,6 +88,29 @@ namespace BLL.Services
                     Database.Dispose();
                 }
                 this.disposed = true;
+            }
+        }
+
+        public async Task<UserDTO> GetUserForAuth(UserDTO userDto)
+        {
+            ApplicationUser useremail = await Database.UserManager.FindByEmailAsync(userDto.Email);
+            ApplicationUser user = await Database.UserManager.FindAsync(useremail.UserName, userDto.Password);
+            if (user != null)
+            {
+                UserDTO found = new UserDTO { 
+                    Id = user.Id, 
+                    Email = user.Email, 
+                    UserName = user.UserName, 
+                    BirthdayDate = user.ClientProfile.BirthdayDate, 
+                    FirstName = user.ClientProfile.FirstName, 
+                    LastName = user.ClientProfile.LastName,
+                    Role = user.ClientProfile.Role
+                };
+                return found;
+            }
+            else
+            {
+                return null;
             }
         }
     }

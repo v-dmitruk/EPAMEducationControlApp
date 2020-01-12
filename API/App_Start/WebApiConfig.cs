@@ -12,7 +12,8 @@ namespace API
         {
             // Конфигурация и службы веб-API
 
-            config.EnableCors(new EnableCorsAttribute(origins: "*", headers: "*", methods: "*"));
+            //OWIN CORS Enabled in Startup.cs
+            //config.EnableCors(new EnableCorsAttribute(origins: "*", headers: "*", methods: "*"));
 
 
             // Маршруты веб-API
@@ -23,6 +24,8 @@ namespace API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Filters.Add(new AuthorizeAttribute());
         }
     }
 }
