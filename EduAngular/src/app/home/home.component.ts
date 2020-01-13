@@ -8,18 +8,19 @@ import { UserService } from '../shared/user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  userClaims: any;
+  userClaims : any;
  
   constructor(private router: Router, private userService: UserService) { }
  
   ngOnInit() {
     this.userService.getUserClaims().subscribe((data: any) => {
-      this.userClaims = data; 
+      this.userClaims = data;
     });
   }
  
   Logout() {
     localStorage.removeItem('userToken');
+    localStorage.removeItem('userRoles');
     this.router.navigate(['/login']);
   }
 }

@@ -14,17 +14,13 @@
                         <input class="validate" type="text" name="Email" #Email="ngModel" [(ngModel)]="user.Email" required [pattern]="emailPattern">
                         <label [attr.data-error]="Email.errors!=null?(Email.errors.required?'Required field!':'Invalid email!'):''">Email</label>
                     </div>
-                    <div class="input-field col s6">
-                        <select class="browser-default validate" type="text" name="Role" #Role="ngModel" [(ngModel)]="user.Role" required>
-                            <option value="" disabled selected>Choose your role</option>
-                            <option value="visitor">Visitor</option>
-                            <option value="student">Student</option>
-                            <option value="teacher">Teacher</option>
-                            <option value="admin">Administrator</option>
+                    <div class="input-field col s6" *ngIf="roles">
+                        <select class="browser-default" [(ngModel)]="user.Role" name="Role" type="text" #Role="ngModel" required>
+                            <option *ngFor="let role of roles" [ngValue]="role.Name">{{role.Name}}</option>
                         </select>
-                        <label data-error="Required field!"> </label>
-                    </div>
+                    <label data-error="Required field!"> </label>
                 </div>
+                    </div>
                 <div class="row">
                     <div class="input-field col s4">
                         <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="user.FirstName">

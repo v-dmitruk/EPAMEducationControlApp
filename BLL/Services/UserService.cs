@@ -1,6 +1,7 @@
 ﻿using BLL.DTOModels;
 using BLL.Interfaces;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -112,6 +113,20 @@ namespace BLL.Services
             {
                 return null;
             }
+        }
+
+        public IEnumerable<RoleDTO> GetRoles()
+        {
+            var roles = Database.RoleManager.Roles
+                .Select(x => new { x.Id, x.Name })
+                .ToList();
+            List<RoleDTO> result = new List<RoleDTO>();
+            foreach (var item in roles)
+            {
+                RoleDTO role = new RoleDTO { Id = item.Id, Name = item.Name };
+                result.Add(role);
+            }
+            return result;            
         }
     }
 }

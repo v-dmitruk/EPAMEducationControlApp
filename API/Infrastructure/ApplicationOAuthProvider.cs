@@ -1,6 +1,7 @@
 ﻿using BLL.DTOModels;
 using BLL.Interfaces;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,14 @@ namespace API.Infrastructure
                 identity.AddClaim(new Claim("BirthdayDate", user.BirthdayDate.ToString()));
                 identity.AddClaim(new Claim("LoggedOn", DateTime.Now.ToString()));
                 identity.AddClaim(new Claim("Expiration", (DateTime.Now.AddMinutes(60)).ToString()));
-                context.Validated(identity);
+                identity.AddClaim(new Claim(ClaimTypes.Role, user.Role));
+                var additionalData = new AuthenticationProperties(new Dictionary<string, string>{
+                    {
+                        "role", Newtonsoft.Json.JsonConvert.SerializeObject(user.Role)
+                    }
+                });
+                var token = new AuthenticationTicket(identity, additionalData);
+                context.Validated(token);
             }
             else
                 return ;
@@ -44,6 +52,14 @@ namespace API.Infrastructure
             {
                 return HttpContext.Current.GetOwinContext().GetUserManager<IUserService>();
             }
+        }
+        public override Task TokenEndpoint(OAuthTokenEndpointContext context)
+        {
+            foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
+            {
+                context.AdditionalResponseParameters.Add(property.Key, property.Value);
+            }
+            return Task.FromResult<object>(null);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace UserDAL.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public DateTime BirthdayDate { get; set; }
+        public DateTime? BirthdayDate { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         public string Role { get; set; }
     }

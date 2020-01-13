@@ -157,6 +157,7 @@
     <Compile Include="DTOModels\LectionDTO.cs" />
     <Compile Include="DTOModels\LectionResultDTO.cs" />
     <Compile Include="DTOModels\QuestionDTO.cs" />
+    <Compile Include="DTOModels\RoleDTO.cs" />
     <Compile Include="DTOModels\ScheduledEventDTO.cs" />
     <Compile Include="DTOModels\StudentDTO.cs" />
     <Compile Include="DTOModels\TeacherDTO.cs" />

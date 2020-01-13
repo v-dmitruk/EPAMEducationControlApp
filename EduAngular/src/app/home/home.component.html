@@ -3,6 +3,9 @@
     <a href="#" class="brand-logo center">
       <i class="material-icons">book</i>Education with EPAM</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li  *ngIf="userService.roleMatch(['admin'])">
+            <a routerLink="/adminPanel">Admin Panel</a>
+          </li>
       <li>
         <a (click)="Logout()">Logout</a>
       </li>
@@ -20,6 +23,8 @@
         <span>Full Name : {{userClaims.FirstName}} {{userClaims.LastName}}</span>
         <br>
         <span>Logged On : {{userClaims.LoggedOn}}</span>
+        <br>
+        <span>Role : {{userClaims.Role}}</span>
       </div>
     </div>
   </div>

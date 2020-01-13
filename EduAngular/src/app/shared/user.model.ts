@@ -4,6 +4,6 @@ export class User {
     Email: string;
     FirstName: string;
     LastName: string;
-    BirthdayDate: Date;
+    BirthdayDate: string;
     Role: string;
 }

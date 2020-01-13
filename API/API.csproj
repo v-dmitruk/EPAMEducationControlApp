@@ -309,6 +309,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LectionResultsController.cs" />
     <Compile Include="Controllers\LectionsController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Controllers\TestResultsController.cs" />
@@ -318,6 +319,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\ApplicationOAuthProvider.cs" />
+    <Compile Include="Infrastructure\AuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\MapperProfile.cs" />
     <Compile Include="Infrastructure\ServicesModule.cs" />
     <Compile Include="Models\AccountModel.cs" />
@@ -326,6 +328,7 @@
     <Compile Include="Models\LectionResultModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\QuestionModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\ScheduledEventModule.cs" />
     <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Models\TeacherModel.cs" />

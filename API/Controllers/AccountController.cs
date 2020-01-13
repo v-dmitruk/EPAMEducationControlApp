@@ -116,9 +116,15 @@ namespace API.Controllers
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 UserName = model.UserName,
-                BirthdayDate = Convert.ToDateTime(model.BirthdayDate),
-                Role = "visitor"
+                //BirthdayDate = (DateTime?)Convert.ToDateTime(model.BirthdayDate),
+                Role = model.Role
             };
+            if (string.IsNullOrEmpty(model.BirthdayDate))
+                userDto.BirthdayDate = null;
+            else 
+            {
+                userDto.BirthdayDate = (DateTime?)Convert.ToDateTime(model.BirthdayDate);
+            }
             try
             {
                 IdentityResult result = await UserService.Create(userDto);
@@ -141,6 +147,30 @@ namespace API.Controllers
                 BirthdayDate = new DateTime(1991,9,25),
                 Role = "admin",
             }, new List<string> { "student", "visitor", "teacher", "admin" });
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "admin")]
+        [Route("api/ForAdminRole")]
+        public string ForAdminRole()
+        {
+            return "for admin role";
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "student")]
+        [Route("api/ForStudentRole")]
+        public string ForStudentRole()
+        {
+            return "For student role";
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "student,visitor")]
+        [Route("api/ForStudentOrVisitor")]
+        public string ForStudentOrVisitor()
+        {
+            return "For student/reader role";
         }
     }
 }

@@ -15,5 +15,6 @@ namespace BLL.Interfaces
         Task<ClaimsIdentity> Authenticate(UserDTO userDto);
         Task SetInitialData(UserDTO adminDto, List<string> roles);
         Task<UserDTO> GetUserForAuth(UserDTO userDto);
+        IEnumerable<RoleDTO> GetRoles();
     }
 }

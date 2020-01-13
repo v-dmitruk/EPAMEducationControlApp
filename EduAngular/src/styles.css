@@ -34,4 +34,14 @@ div.error-message i{
     background-color: #fff !important;
 }
 
+select {
+    background: #6ac17a;
+    color:#fff;
+}
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
