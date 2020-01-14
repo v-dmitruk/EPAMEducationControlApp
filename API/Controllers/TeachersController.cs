@@ -21,6 +21,8 @@ namespace API.Controllers
         Mapper map = new Mapper(MapperProfile.Configured());
 
         // GET: api/Teachers
+        [HttpGet]
+        [Route("api/Teachers")]
         public IEnumerable<TeacherModel> Get()
         {
             IEnumerable<TeacherModel> result = map.Map<IEnumerable<TeacherModel>>(_db.TeacherService.GetAll());

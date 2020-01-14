@@ -1,0 +1,24 @@
+<app-upperbar></app-upperbar>
+<div style="text-align:center">
+    <h2 class="jumbotron bg-secondary text-white">Students</h2>
+</div>
+<div class="container">
+    <table class="highlight">
+        <thead>
+          <tr>
+              <th>Student Name</th>
+              <th>Description</th>
+              <th>BirthDay</th>   
+              <th>CoursesCount</th>        
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of studentService.allStudentList">
+            <td>{{student.Name}} {{student.LastName}}</td>
+            <td>{{student.Description}}</td>
+            <td>{{student.BirthDate}}</td>
+            <td>{{student.Courses.length}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

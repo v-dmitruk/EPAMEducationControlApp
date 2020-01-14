@@ -16,11 +16,6 @@ export class HomeComponent implements OnInit {
     this.userService.getUserClaims().subscribe((data: any) => {
       this.userClaims = data;
     });
-  }
- 
-  Logout() {
-    localStorage.removeItem('userToken');
-    localStorage.removeItem('userRoles');
-    this.router.navigate(['/login']);
+    localStorage.setItem('UserName',this.userClaims.UserName);
   }
 }

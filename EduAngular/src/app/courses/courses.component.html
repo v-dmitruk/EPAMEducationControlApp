@@ -1,0 +1,24 @@
+<app-upperbar></app-upperbar>
+<div style="text-align:center">
+    <h2 class="jumbotron bg-secondary text-white">Courses</h2>
+</div>
+<div class="container">
+    <table class="highlight">
+        <thead>
+          <tr>
+              <th>Course Name</th>
+              <th>Teacher</th>
+              <th>MinScore/Score</th>
+              <th>Students/Places</th>           
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courseService.allCourseList">
+            <td>{{course.Name}}</td>
+            <td>{{course.Creator.Name}}</td>
+            <td>{{course.MinRequiredScore}} of {{course.MaxScore}}</td>
+            <td>{{course.Students.length}}/{{course.StudentsMaxQuantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

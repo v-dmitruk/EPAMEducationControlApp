@@ -21,9 +21,20 @@ namespace API.Controllers
         Mapper map = new Mapper(MapperProfile.Configured());
 
         // GET: api/Courses
+        [HttpGet]
+        [Route("api/Courses")]
         public IEnumerable<CourseModel> Get()
         {
             IEnumerable<CourseModel> result = map.Map<IEnumerable<CourseModel>>(_db.CourseService.GetAll());
+            return result;
+        }
+
+        [Route("api/GetActiveCourses")]
+        [HttpGet]
+        [AllowAnonymous]
+        public IEnumerable<CourseModel> GetActiveCourses()
+        {
+            IEnumerable<CourseModel> result = map.Map<IEnumerable<CourseModel>>(_db.CourseService.GetAllActive());
             return result;
         }
 
@@ -41,7 +52,7 @@ namespace API.Controllers
             _db.CourseService.CreateCourse(map.Map<CourseDTO>(value));
             return CreatedAtRoute("DefaultApi", new {  }, value);
         }
-
+        
         // PUT: api/Courses/5
         public IHttpActionResult Put(int id, CourseModel value)
         {

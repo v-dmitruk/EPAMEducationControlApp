@@ -1,0 +1,26 @@
+<app-upperbar></app-upperbar>
+<div style="text-align:center">
+    <h2 class="jumbotron bg-secondary text-white">Tests</h2>
+</div>
+<div class="container">
+    <table class="highlight">
+        <thead>
+          <tr>
+              <th>Test Name</th>
+              <th>Description</th>
+              <th>MaxScore</th>   
+              <th>Duration</th> 
+              <th>Test Creator</th>    
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let test of testService.allTestList">
+            <td>{{test.Name}}</td>
+            <td>{{test.Description}}</td>
+            <td>{{test.MaxMark}}</td>
+            <td>{{test.Duration}}</td>
+            <td>{{test.Creator.Name}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

@@ -10,7 +10,6 @@ namespace API.Models
         public TeacherModel()
         {
         }
-        [System.ComponentModel.DataAnnotations.Required]
         public int TeacherID { get; set; }
         public int UserID { get; set; }
         public string Name { get; set; }

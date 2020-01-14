@@ -10,7 +10,6 @@ namespace API.Models
         public TestResultModel()
         {
         }
-        [System.ComponentModel.DataAnnotations.Required]
         public int TestResultID { get; set; }
         public TestModel Test { get; set; }
         public StudentModel Student { get; set; }

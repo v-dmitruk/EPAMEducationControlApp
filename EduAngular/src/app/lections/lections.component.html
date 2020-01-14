@@ -1,0 +1,24 @@
+<app-upperbar></app-upperbar>
+<div style="text-align:center">
+    <h2 class="jumbotron bg-secondary text-white">Lections</h2>
+</div>
+<div class="container">
+    <table class="highlight">
+        <thead>
+          <tr>
+              <th>Lection Name</th>
+              <th>Lection Type</th>
+              <th>Description</th>   
+              <th>Score+Add</th>        
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lection of lectionService.allLectionList">
+            <td>{{lection.Name}}</td>
+            <td>{{lection.LectionType}}</td>
+            <td>{{lection.Description}}</td>
+            <td>{{lection.MaxMark}}/{{lection.AdditionalMarkIsAvailable}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

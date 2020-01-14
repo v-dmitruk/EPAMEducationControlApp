@@ -21,6 +21,8 @@ namespace API.Controllers
         Mapper map = new Mapper(MapperProfile.Configured());
 
         // GET: api/Lections
+        [HttpGet]
+        [Route("api/Lections")]
         public IEnumerable<LectionModel> Get()
         {
             IEnumerable<LectionModel> result = map.Map<IEnumerable<LectionModel>>(_db.LectionService.GetAll());

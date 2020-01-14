@@ -21,6 +21,8 @@ namespace API.Controllers
         Mapper map = new Mapper(MapperProfile.Configured());
 
         // GET: api/Tests
+        [HttpGet]
+        [Route("api/Tests")]
         public IEnumerable<TestModel> Get()
         {
             IEnumerable<TestModel> result = map.Map<IEnumerable<TestModel>>(_db.TestService.GetAll());

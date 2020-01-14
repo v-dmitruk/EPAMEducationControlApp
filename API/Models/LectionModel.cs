@@ -8,7 +8,6 @@ namespace API.Models
 {
     public class LectionModel
     {
-        [Required]
         public int LectionID { get; set; }
         public string LectionType { get; set; }
         public string Name { get; set; }

@@ -8,7 +8,6 @@ namespace API.Models
 {
     public class CourseModel
     {
-        [Required]
         public int CourseID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -20,6 +19,7 @@ namespace API.Models
         public DateTime CreationDate { get; set; }
         public int DurationInDays { get; set; }
         public List<LectionModel> Lections { get; set; } = new List<LectionModel>();
+        public List<TestModel> Tests { get; set; } = new List<TestModel>();
         public List<StudentModel> Students { get; set; } = new List<StudentModel>();
         public CourseModel()
         {

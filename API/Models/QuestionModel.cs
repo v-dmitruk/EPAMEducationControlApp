@@ -7,7 +7,6 @@ namespace API.Models
 {
     public class QuestionModel
     {
-        [System.ComponentModel.DataAnnotations.Required]
         public int QuestionID { get; set; }
         public TeacherModel Creator { get; set; }
         public DateTime CreationDate { get; set; }
